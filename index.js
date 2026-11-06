@@ -7,8 +7,12 @@ const fs = require('fs-extra');
 
 async function startBot() {
   const { state, saveCreds } = await useMultiFileAuthState('auth');
-  const sock = makeWASocket({ auth: state, printQRInTerminal: true });
-  sock.ev.on('creds.update', saveCreds);
+const sock = makeWASocket({auth: state, printQRInTerminal: false});
+sock.ev.on('creds.update', saveCreds);
+if(!sock.authState.creds.registered){
+const code = await sock.requestPairingCode('919179555144');
+console.log('PAIRING CODE:', code);
+}
 
   sock.ev.on('messages.upsert', async ({ messages }) => {
     const msg = messages[0];
