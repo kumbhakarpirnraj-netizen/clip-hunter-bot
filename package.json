@@ -1,0 +1,12 @@
+{
+  "name": "clip-hunter-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": { "start": "node index.js" },
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.0",
+    "yt-dlp-exec": "^1.0.2",
+    "fluent-ffmpeg": "^2.1.2",
+    "fs-extra": "^11.2.0"
+  }
+}
