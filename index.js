@@ -1,3 +1,5 @@
+const http = require('http');
+http.createServer((req,res)=>{res.writeHead(200);res.end('Bot is running');}).listen(process.env.PORT || 3000);
 const { default: makeWASocket, useMultiFileAuthState, DisconnectReason } = require('@whiskeysockets/baileys');
 const ytdl = require('yt-dlp-exec');
 const ffmpeg = require('fluent-ffmpeg');
