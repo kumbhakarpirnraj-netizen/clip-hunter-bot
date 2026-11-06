@@ -10,8 +10,12 @@ async function startBot() {
 const sock = makeWASocket({auth: state, printQRInTerminal: false});
 sock.ev.on('creds.update', saveCreds);
 if(!sock.authState.creds.registered){
+setTimeout(async()=>{
+try{
 const code = await sock.requestPairingCode('919179555144');
 console.log('PAIRING CODE:', code);
+}catch(e){ console.log('PAIRING ERROR:', e.message); }
+}, 3000);
 }
 
   sock.ev.on('messages.upsert', async ({ messages }) => {
